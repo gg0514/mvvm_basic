@@ -1,12 +1,27 @@
-﻿<Window x:Class="mvvm_basic.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mvvm_basic"
+        xmlns:vw="clr-namespace:mvvm_basic.ViewModel" 
+        x:Class="mvvm_basic.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="393" Width="800">
+    <Grid Margin="0,0,0,5">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Grid.DataContext>
+            <vw:MainViewModel/>
+        </Grid.DataContext>
+        
+        <Label x:Name="label" Content="숫자 바꾸기 " HorizontalAlignment="Center" Height="51" Margin="0,73,0,0" VerticalAlignment="Top" Width="176" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
+        <Label x:Name="label1" Content="Input" HorizontalAlignment="Left" Height="51" Margin="162,152,0,0" VerticalAlignment="Top" Width="176" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
+        <Label x:Name="label2" Content="Output" HorizontalAlignment="Left" Height="51" Margin="430,152,0,0" VerticalAlignment="Top" Width="176" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="40" Margin="212,208,0,0" TextWrapping="Wrap" Text="{Binding Model.Num, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="107" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="40" Margin="464,208,0,0" TextWrapping="Wrap" Text="{Binding Model.Num2, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="108" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
     </Grid>
 </Window>
