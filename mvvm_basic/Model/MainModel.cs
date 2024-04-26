@@ -19,8 +19,6 @@ namespace mvvm_basic.Model
             set
             {
                 num = value;
-                Num2 = value * 2;
-
                 OnPropertyChanged("Num");
             }
         }
@@ -30,7 +28,6 @@ namespace mvvm_basic.Model
             set
             {
                 num2 = value;
-
                 OnPropertyChanged("Num2");
             }
         }

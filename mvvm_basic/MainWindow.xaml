@@ -16,12 +16,21 @@
         <Grid.DataContext>
             <vw:MainViewModel/>
         </Grid.DataContext>
-        
+
         <Label x:Name="label" Content="숫자 바꾸기 " HorizontalAlignment="Center" Height="51" Margin="0,73,0,0" VerticalAlignment="Top" Width="176" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
         <Label x:Name="label1" Content="Input" HorizontalAlignment="Left" Height="51" Margin="162,152,0,0" VerticalAlignment="Top" Width="176" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
         <Label x:Name="label2" Content="Output" HorizontalAlignment="Left" Height="51" Margin="430,152,0,0" VerticalAlignment="Top" Width="176" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
+        <!--
+            중요한 것은 {Binding Model.Num} 표현에서 Model은 ViewModel의 accessor이고, Num은 Model의 accessor이다
+            즉, accessor를 통하여 View ==> Model로 다이렉트로 접근하고 있다.
+        -->
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="40" Margin="212,208,0,0" TextWrapping="Wrap" Text="{Binding Model.Num, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="107" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="40" Margin="464,208,0,0" TextWrapping="Wrap" Text="{Binding Model.Num2, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="108" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="40" Margin="470,208,0,0" TextWrapping="Wrap" Text="{Binding Model.Num2, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="108" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+        <!--
+            중요한 것은 {Binding btn_cmd} 표현에서 btn_cmd은 ViewModel의 accssor라는 것이다
+        -->
+        <Button x:Name="button" Content="실행"  Command="{Binding btn_cmd}" HorizontalAlignment="Center" Height="40" Margin="0,208,0,0" VerticalAlignment="Top" Width="60"/>
 
     </Grid>
 </Window>
