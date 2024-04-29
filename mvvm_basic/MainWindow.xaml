@@ -30,7 +30,7 @@
         <!--
             중요한 것은 {Binding btn_cmd} 표현에서 btn_cmd은 ViewModel의 accssor라는 것이다
         -->
-        <Button x:Name="button" Content="실행"  Command="{Binding btn_cmd}" HorizontalAlignment="Center" Height="40" Margin="0,208,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="button" Content="실행"  Command="{Binding Btn_cmd}" HorizontalAlignment="Center" Height="40" Margin="0,208,0,0" VerticalAlignment="Top" Width="60"/>
 
     </Grid>
 </Window>

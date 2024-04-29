@@ -4,37 +4,60 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using mvvm_basic.Model;
+
+
 
 namespace mvvm_basic.ViewModel
 {
     internal class MainViewModel : INotifyPropertyChanged
     {
-        private Model.MainModel model = null;
+        //*************************************************************
+        // private Field
 
-        public Model.MainModel Model
+        // ViewModel의 역할
+        // 1) Event의 전달자
+        // 2) Model의 전달자
+        private Command _btn_cmd = null;
+        private MainModel _model = null;
+
+
+        //*************************************************************
+        // public Propery
+
+        public Command Btn_cmd 
         {
-            get { 
-                return model; 
-            }
-            set { 
-                model = value; 
-                OnPropertyChanged("Model"); 
+            get => _btn_cmd;
+            set => _btn_cmd = value;
+        }
+
+
+        public MainModel Model
+        {
+            get => _model;
+            set
+            {
+                _model = value;
+                OnPropertyChanged("Model");
             }
         }
 
-        // 여기서 중요한 것은 Auto-Implemented Properties이라는 것이다.
-        public Command btn_cmd { get; set; }
 
-        // 이렇게 하면, command 바인딩이 안 된다.
-        // public Command btn_cmd;
-
+        //*************************************************************
+        // public Constructor
 
 
         public MainViewModel()
         {
-            model = new Model.MainModel();
-            btn_cmd = new Command(Execute_func, CanExecute_func);
+            _model = new MainModel();
+            _btn_cmd = new Command(Execute_func, CanExecute_func);
         }
+
+
+
+        //*************************************************************
+        // Event Handler
+
 
         private void Execute_func(object obj)
         {
@@ -45,7 +68,7 @@ namespace mvvm_basic.ViewModel
             // Command 받고, Notify 돌려준다.
             // View -> ViewModel -> Model
             // Model -> 
-            model.Num2 = model.Num * 2;
+            _model.Num2 = _model.Num * 2;
         }
 
         private bool CanExecute_func(object obj)
@@ -53,6 +76,10 @@ namespace mvvm_basic.ViewModel
             return true;
         }
 
+
+
+        //*************************************************************
+        // Event Notifier
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -64,5 +91,6 @@ namespace mvvm_basic.ViewModel
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+
     }
 }
